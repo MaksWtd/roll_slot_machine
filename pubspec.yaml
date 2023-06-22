@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  infinite_carousel: ^1.0.2
+  infinite_carousel: ^1.0.3
 
 dev_dependencies:
   flutter_test:

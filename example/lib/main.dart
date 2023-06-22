@@ -151,7 +151,8 @@ class RollSlotWidget extends StatelessWidget {
 
   final RollSlotController rollSlotController;
 
-  const RollSlotWidget({Key? key, required this.prizesList, required this.rollSlotController})
+  const RollSlotWidget(
+      {Key? key, required this.prizesList, required this.rollSlotController})
       : super(key: key);
 
   @override

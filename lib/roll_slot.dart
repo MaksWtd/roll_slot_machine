@@ -17,16 +17,20 @@ class RollSlot extends StatefulWidget {
   final RollSlotController? rollSlotController;
 
   final List<Widget> children;
+
   final Curve curve;
 
   final double itemExtend;
 
   final EdgeInsets itemPadding;
 
+  final ScrollPhysics? scrollPhysics;
+
   const RollSlot({
     Key? key,
     required this.itemExtend,
     required this.children,
+    this.scrollPhysics,
     this.rollSlotController,
     this.curve = Curves.easeOut,
     this.itemPadding = const EdgeInsets.all(8.0),
@@ -37,7 +41,8 @@ class RollSlot extends StatefulWidget {
 }
 
 class _RollSlotState extends State<RollSlot> {
-  final InfiniteScrollController _infiniteScrollController = InfiniteScrollController();
+  final InfiniteScrollController _infiniteScrollController =
+      InfiniteScrollController();
 
   int currentIndex = 0;
   int _stopIndex = 0;
@@ -66,7 +71,7 @@ class _RollSlotState extends State<RollSlot> {
     return AbsorbPointer(
       absorbing: false,
       child: InfiniteCarousel.builder(
-        physics: BouncingScrollPhysics(),
+        physics: widget.scrollPhysics ?? BouncingScrollPhysics(),
         itemExtent: widget.itemExtend,
         controller: _infiniteScrollController,
         itemCount: widget.children.length,
@@ -123,7 +128,8 @@ class _RollSlotState extends State<RollSlot> {
 
   Future<void> animate() async {
     if (widget.rollSlotController != null) {
-      _nextItemTimer = Timer.periodic(const Duration(milliseconds: 120), (timer) async {
+      _nextItemTimer =
+          Timer.periodic(const Duration(milliseconds: 120), (timer) async {
         stopSlotAtIndex(
           currentRollIndex: currentIndex % widget.children.length,
         );
