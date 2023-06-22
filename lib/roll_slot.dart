@@ -37,7 +37,7 @@ class RollSlot extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _RollSlotState createState() => _RollSlotState();
+  State createState() => _RollSlotState();
 }
 
 class _RollSlotState extends State<RollSlot> {
@@ -71,7 +71,7 @@ class _RollSlotState extends State<RollSlot> {
     return AbsorbPointer(
       absorbing: false,
       child: InfiniteCarousel.builder(
-        physics: widget.scrollPhysics ?? BouncingScrollPhysics(),
+        physics: widget.scrollPhysics ?? const BouncingScrollPhysics(),
         itemExtent: widget.itemExtend,
         controller: _infiniteScrollController,
         itemCount: widget.children.length,
@@ -143,7 +143,7 @@ class _RollSlotState extends State<RollSlot> {
       _infiniteScrollController.animateToItem(
         _stopIndex,
         curve: Curves.easeOut,
-        duration: Duration(milliseconds: 20 * 120),
+        duration: const Duration(milliseconds: 20 * 120),
       );
       _nextItemTimer.cancel();
       _isStopped = false;

@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
     if (settings.name == 'home') {
       return MaterialPageRoute(
         builder: (BuildContext context) {
-          return MyHomePage(
+          return const MyHomePage(
             title: 'title',
           );
         },
@@ -51,12 +51,12 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -92,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Roll slot machine'),
+        title: const Text('Roll slot machine'),
         centerTitle: true,
       ),
       body: Center(
@@ -140,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
               centerIndex: Random().nextInt(index),
               bottomIndex: Random().nextInt(index));
         },
-        child: Icon(Icons.refresh),
+        child: const Icon(Icons.refresh),
       ),
     );
   }
@@ -176,7 +176,7 @@ class RollSlotWidget extends StatelessWidget {
           Flexible(
             child: TextButton(
               onPressed: () => rollSlotController.stop(),
-              child: Text('Stop'),
+              child: const Text('Stop'),
             ),
           ),
         ],
@@ -199,8 +199,10 @@ class BuildItem extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.transparent,
         boxShadow: [
-          BoxShadow(color: darkBlue1.withOpacity(.2), offset: Offset(5, 5)),
-          BoxShadow(color: darkBlue1.withOpacity(.2), offset: Offset(-5, -5)),
+          BoxShadow(
+              color: darkBlue1.withOpacity(.2), offset: const Offset(5, 5)),
+          BoxShadow(
+              color: darkBlue1.withOpacity(.2), offset: const Offset(-5, -5)),
         ],
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
